@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <title>Love Letter for Puja 💖</title>
+  <style>
+     body {
+  margin: 0;
+  background: linear-gradient(to top right, #1a001a, #330033);
+  font-family: 'Segoe UI', sans-serif;
+  color: white;
+  text-align: center;
+  overflow-x: hidden;
+
+  /* 👇 Add this line */
+  background-image: url('img6.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+
+    .love-letter-box {
+      margin: 100px auto 30px;
+      padding: 30px;
+      width: 300px;
+      background: #ffccff;
+      color: #660033;
+      border-radius: 20px;
+      font-size: 24px;
+      font-weight: bold;
+      box-shadow: 0 0 15px #ff66cc;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .love-letter-box:hover {
+      background: #ff99cc;
+      transform: scale(1.05);
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .top-photo-section {
+      margin-top: 30px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+      position: relative;
+    }
+
+    .lover-photo {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      border: 4px solid white;
+      object-fit: cover;
+      box-shadow: 0 0 15px pink;
+    }
+
+    .names {
+      font-size: 26px;
+      color: #ff99cc;
+      animation: glow 2s infinite;
+    }
+
+    @keyframes glow {
+      0% { text-shadow: 0 0 5px #ff99cc; }
+      50% { text-shadow: 0 0 20px #ff66cc; }
+      100% { text-shadow: 0 0 5px #ff99cc; }
+    }
+
+    .rose {
+      position: absolute;
+      width: 70px;
+      top: -40px;
+    }
+
+    .left-rose {
+      left: 10px;
+    }
+
+    .right-rose {
+      right: 10px;
+    }
+
+    .box {
+      background: rgba(255, 255, 255, 0.08);
+      margin: 20px auto;
+      padding: 20px;
+      border-radius: 20px;
+      width: 80%;
+      max-width: 600px;
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+      animation: pop 1s ease-in-out forwards;
+    }
+
+    @keyframes pop {
+      0% { opacity: 0; transform: scale(0.5); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+
+    #teddy {
+      width: 150px;
+      animation: float 3s ease-in-out infinite alternate;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      100% { transform: translateY(-10px); }
+    }
+
+    .petal {
+      position: absolute;
+      top: -20px;
+      width: 20px;
+      height: 20px;
+      background: pink;
+      border-radius: 50%;
+      animation: fall 5s linear infinite;
+    }
+
+    @keyframes fall {
+      to {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    #shayari {
+      font-size: 22px;
+      white-space: pre-wrap;
+      text-align: center;
+    }
+
+    #iLoveYou {
+      font-size: 36px;
+      color: #ff66cc;
+      animation: glow 1.5s infinite;
+    }
+
+    .balloon {
+      position: absolute;
+      bottom: -100px;
+      width: 40px;
+      height: 60px;
+      background: red;
+      border-radius: 20px 20px 0 0;
+      animation: floatUp 6s linear forwards;
+    }
+
+    @keyframes floatUp {
+      to {
+        transform: translateY(-120vh);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Background Music -->
+  <audio id="bgmusic" loop>
+    <source src="abhiraj.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- Love Letter Button -->
+  <div class="love-letter-box" onclick="startLoveStory()">📩 Tap to Open Love Letter 💌</div>
+
+  <!-- Hidden Content -->
+  <div id="mainContent" class="hidden">
+    <div class="top-photo-section">
+      <img class="rose left-rose" src="img3.jpg" alt="Left Rose">
+      <img class="lover-photo" src="img7.jpg" alt="Prem">
+      <div class="names">Prem ❤️ Puja</div>
+      <img class="lover-photo" src="img8.jpg" alt="Puja">
+      <img class="rose right-rose" src="img3.jpg" alt="Right Rose">
+    </div>
+
+    <div class="box" id="box1" style="display: none;">
+      <img id="teddy" src="img5.jpg" alt="Teddy Bear">
+      <p>ये टेडी बियर तुम्हारी मुस्कान जैसा प्यारा है 😊</p>
+    </div>
+
+    <div id="petals"></div>
+
+    <div class="box" id="box2" style="display: none;">
+      <div id="shayari"></div>
+    </div>
+
+    <div class="box" id="box3" style="display: none;">
+      <div id="iLoveYou">I Love You puja 💖</div>
+    </div>
+  </div>
+
+  <script>
+    function startLoveStory() {
+      document.querySelector('.love-letter-box').style.display = 'none';
+      document.getElementById('mainContent').classList.remove('hidden');
+
+      // Start background music
+      const music = document.getElementById('bgmusic');
+      music.play().catch((e) => {
+        console.log("Music autoplay failed, user interaction needed.");
+      });
+
+      // Step 1: Teddy
+      setTimeout(() => {
+        document.getElementById("box1").style.display = 'block';
+      }, 1000);
+
+      // Step 2: Petals
+      setTimeout(() => {
+        for (let i = 0; i < 50; i++) {
+          const petal = document.createElement('div');
+          petal.classList.add('petal');
+          petal.style.left = Math.random() * 100 + 'vw';
+          petal.style.animationDuration = 3 + Math.random() * 2 + 's';
+          document.body.appendChild(petal);
+        }
+      }, 2500);
+
+      // Step 3: Shayari
+      const shayariText = "तेरे खयालों में हर वक्त डूबा रहता हूँ,\nतेरी मुस्कान में अपनी दुनिया देखता हूँ,\nतू साथ हो तो हर मौसम बहार बन जाता है,\nतुझसे दूर होकर भी बस तुझमें ही रहता हूँ... 💖";
+
+      setTimeout(() => {
+        document.getElementById("box2").style.display = 'block';
+        typeShayari(shayariText, 0);
+      }, 4000);
+    }
+
+    function typeShayari(text, i) {
+      if (i < text.length) {
+        document.getElementById('shayari').innerHTML += text.charAt(i);
+        setTimeout(() => typeShayari(text, i + 1), 70);
+      } else {
+        // Step 4: I Love You
+        setTimeout(() => {
+          document.getElementById("box3").style.display = 'block';
+        }, 1000);
+
+        // Step 5: Balloons
+        setTimeout(() => {
+          for (let i = 0; i < 30; i++) {
+            const balloon = document.createElement('div');
+            balloon.classList.add('balloon');
+            balloon.style.left = Math.random() * 100 + 'vw';
+            balloon.style.backgroundColor = getRandomColor();
+            balloon.style.animationDuration = 5 + Math.random() * 3 + 's';
+            document.body.appendChild(balloon);
+          }
+        }, 1500);
+      }
+    }
+
+    function getRandomColor() {
+      const colors = ['red', 'pink', 'yellow', 'blue', 'purple', 'orange'];
+      return colors[Math.floor(Math.random() * colors.length)];
+    }
+  </script>
+</body>
+</html>
